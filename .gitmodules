@@ -1,0 +1,42 @@
+[submodule "httpkt"]
+	path = httpkt
+	url = https://gitlab.com/grrfe/httpkt
+[submodule "tld-lib"]
+	path = tld-lib
+	url = https://github.com/1fexd/tld-lib
+[submodule "amp2html"]
+	path = amp2html
+	url = https://github.com/1fexd/amp2htmlkt
+[submodule "clearurl"]
+	path = clearurl
+	url = https://github.com/1fexd/clearurlkt
+[submodule "libredirect"]
+	path = libredirect
+	url = https://github.com/1fexd/libredirectkt
+[submodule "signify"]
+	path = signify
+	url = https://github.com/1fexd/signifykt
+[submodule "embed-resolve"]
+	path = embed-resolve
+	url = https://github.com/1fexd/embed-resolve
+[submodule "fastforward"]
+	path = fastforward
+	url = https://github.com/1fexd/fastforwardkt
+[submodule "mimetype"]
+	path = mimetype
+	url = https://github.com/1fexd/mimetypekt
+[submodule "gson-ext"]
+	path = gson-ext
+	url = https://gitlab.com/grrfe/gson-ext
+[submodule "jsoup-ext"]
+	path = jsoup-ext
+	url = https://gitlab.com/grrfe/jsoup-ext
+[submodule "kotlin-ext"]
+	path = kotlin-ext
+	url = https://gitlab.com/grrfe/kotlin-ext
+[submodule "stringbuilder-util"]
+	path = stringbuilder-util
+	url = https://github.com/1fexd/stringbuilder-util-kt
+[submodule "uriparser"]
+	path = uriparser
+	url = https://github.com/1fexd/uriparser
