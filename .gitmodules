@@ -40,3 +40,6 @@
 [submodule "uriparser"]
 	path = uriparser
 	url = https://github.com/1fexd/uriparser
+[submodule "process-launcher"]
+	path = process-launcher
+	url = https://gitlab.com/grrfe/process-launcher
