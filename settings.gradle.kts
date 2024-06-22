@@ -8,7 +8,7 @@ rootProject.name = "super"
 //    }
 //
 //    plugins {
-//        kotlin("jvm") version "1.9.23"
+//        kotlin("jvm") version "1.9.24"
 //        id("de.fayard.refreshVersions") version "0.60.1"
 //        id("org.gradle.maven-publish")
 //        id("net.nemerosa.versioning") version "3.0.0"
