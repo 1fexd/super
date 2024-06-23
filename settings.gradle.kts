@@ -55,7 +55,7 @@ val includes = mapOf(
     "signify" to substituteOf("com.github.1fexd:signifykt" mapsTo ":"),
     "koin-helper" to substituteOf("com.gitlab.grrfe:koin-helper" mapsTo ":"),
     "kotlin-reflect-helper" to substituteOf("com.gitlab.grrfe:kotlin-reflect-helper" mapsTo ":"),
-    "kotlin-ext" to substituteOf("com.gitlab.grrfe:kotlin-ext" mapsTo ":"),
+    "kotlin-ext" to substituteOf("com.gitlab.grrfe.kotlin-ext:lib" mapsTo ":lib"),
     "httpkt" to substituteOf("com.gitlab.grrfe.httpkt:core" mapsTo ":core"),
 )
 
