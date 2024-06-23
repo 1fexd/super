@@ -20,6 +20,15 @@ rootProject.name = "super"
 //    id("net.nemerosa.versioning") apply false
 //}
 
+
+//pluginManagement {
+//    includeBuild("plugin")
+//}
+
+//plugins {
+//    id("plugin")
+//}
+
 val excludes = setOf(
     "gradle", "buildSrc",
 //    "bom"
@@ -28,38 +37,56 @@ val excludes = setOf(
 //    "uriparser"
 //,"koin-exposed"
 )
-//
-//includeBuild("clearurl") {
-//    dependencySubstitution {
-//        substitute(module("com.github.1fexd:clearurlkt")).using(project(":"))
-//    }
-//}
 
 data class Substitute(
     val module: String, val mapsTo: String
 )
 
-infix fun String.mapsTo(target: String): Substitute {
-    return Substitute(this, target)
+@JvmInline
+value class Owner(private val name: String) {
+    fun join(repo: String, module: String? = null): String {
+        if (module == null) {
+            return "$name:$repo"
+        }
+
+        return "$name.$repo:$module"
+    }
 }
 
-fun substituteOf(vararg substitutes: Substitute): Set<Substitute> {
-    return setOf(*substitutes)
+class Included(
+    private val projectDir: String,
+    private vararg val modules: String
+) {
+    fun substitutes(owner: Owner, name: String = projectDir): Pair<String, List<Substitute>> {
+        return projectDir to build(owner, name)
+    }
+
+    private fun build(owner: Owner, name: String): List<Substitute> {
+        if (modules.isEmpty()) {
+            return listOf(Substitute(owner.join(name), ":"))
+        }
+
+        return modules.map {
+            Substitute(owner.join(name, it), ":$it")
+        }
+    }
 }
 
+val _1fexd = Owner("com.github.1fexd")
+val grrfe = Owner("com.gitlab.grrfe")
 
 val includes = mapOf(
-    "gson-ext" to substituteOf("com.gitlab.grrfe.gson-ext:core" mapsTo ":core"),
-    "uriparser" to substituteOf("com.github.1fexd:uriparser" mapsTo ":"),
-    "tld-lib" to substituteOf("com.github.1fexd:tld-lib" mapsTo ":"),
-    "signify" to substituteOf("com.github.1fexd:signifykt" mapsTo ":"),
-    "koin-helper" to substituteOf("com.gitlab.grrfe:koin-helper" mapsTo ":"),
-    "kotlin-reflect-helper" to substituteOf("com.gitlab.grrfe:kotlin-reflect-helper" mapsTo ":"),
-    "kotlin-ext" to substituteOf("com.gitlab.grrfe.kotlin-ext:lib" mapsTo ":lib"),
-    "httpkt" to substituteOf("com.gitlab.grrfe.httpkt:core" mapsTo ":core"),
+    Included("gson-ext", "core", "koin").substitutes(grrfe),
+    Included("uriparser").substitutes(_1fexd, "uri-parser"),
+    Included("tld-lib").substitutes(_1fexd),
+    Included("signify", "lib").substitutes(_1fexd, "signifykt"),
+    Included("koin-helper", "api", "core").substitutes(grrfe),
+    Included("kotlin-reflect-helper").substitutes(grrfe),
+    Included("kotlin-ext", "lib").substitutes(grrfe),
+    Included("httpkt", "core", "ext-gson", "ext-jsoup").substitutes(grrfe)
 )
 
-fun DependencySubstitutions.register(substitutes: Set<Substitute>) {
+fun DependencySubstitutions.register(substitutes: List<Substitute>) {
     for ((module, target) in substitutes) {
         substitute(module(module)).using(project(target))
     }
@@ -79,5 +106,3 @@ rootProject.projectDir.listFiles()
     ?.filter { it.isDirectory }
     ?.filter { !it.name.startsWith(".") }
     ?.forEach { includeBuild(it) }
-
-//include("bom")
