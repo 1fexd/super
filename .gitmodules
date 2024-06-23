@@ -46,3 +46,9 @@
 [submodule "kotlin-reflect-helper"]
 	path = kotlin-reflect-helper
 	url = https://gitlab.com/grrfe/kotlin-reflect-helper
+[submodule "tgbotutil"]
+	path = tgbotutil
+	url = https://gitlab.com/grrfe/tgbotutilkt
+[submodule "md-tablegen"]
+	path = md-tablegen
+	url = https://gitlab.com/grrfe/md-tablegen
