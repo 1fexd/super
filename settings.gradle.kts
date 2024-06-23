@@ -3,8 +3,7 @@ rootProject.name = "super"
 //pluginManagement {
 //    repositories {
 //        mavenLocal()
-//        maven(url = "https://jitpack.io")
-//        gradlePluginPortal()
+//    //        gradlePluginPortal()
 //    }
 //
 //    plugins {
@@ -21,7 +20,10 @@ rootProject.name = "super"
 //    id("net.nemerosa.versioning") apply false
 //}
 
-val excludes = setOf("gradle")
+val excludes = setOf("gradle", "buildSrc"
+
+//,"koin-exposed"
+)
 
 rootProject.projectDir.listFiles()
     ?.filter { it.name !in excludes }

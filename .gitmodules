@@ -43,3 +43,6 @@
 [submodule "process-launcher"]
 	path = process-launcher
 	url = https://gitlab.com/grrfe/process-launcher
+[submodule "kotlin-reflect-helper"]
+	path = kotlin-reflect-helper
+	url = https://gitlab.com/grrfe/kotlin-reflect-helper
