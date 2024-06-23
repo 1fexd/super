@@ -20,7 +20,8 @@ rootProject.name = "super"
 //    id("net.nemerosa.versioning") apply false
 //}
 
-val excludes = setOf("gradle", "buildSrc"
+val excludes = setOf("gradle", "buildSrc",
+    "bom"
 
 //,"koin-exposed"
 )
@@ -30,3 +31,5 @@ rootProject.projectDir.listFiles()
     ?.filter { it.isDirectory }
     ?.filter { !it.name.startsWith(".") }
     ?.forEach { includeBuild(it) }
+
+include("bom")
