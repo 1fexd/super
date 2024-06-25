@@ -97,11 +97,11 @@ fun DependencySubstitutions.register(substitutes: List<Substitute>) {
 var isJitPack = System.getenv("JITPACK")?.toBooleanStrictOrNull() == true
 
 if (isJitPack) {
-    include("platform", "testing")
+    include("platform")
 } else {
     includeBuild("platform") {
         dependencySubstitution {
-            substitute(module("com.github.1fexd.super:platform")).using(project(":"))
+            substitute(module("com.github.1fexd:super")).using(project(":"))
         }
     }
 
