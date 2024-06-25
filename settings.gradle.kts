@@ -94,25 +94,29 @@ fun DependencySubstitutions.register(substitutes: List<Substitute>) {
     }
 }
 
-includeBuild("platform") {
-    dependencySubstitution {
-        substitute(module("com.github.1fexd.super:platform")).using(project(":"))
-    }
-}
+var isJitPack = System.getenv("JITPACK")?.toBooleanStrictOrNull() == true
 
-for ((dir, substitutes) in includes) {
-    includeBuild(dir) {
+if (isJitPack) {
+    include("platform", "testing")
+} else {
+    includeBuild("platform") {
         dependencySubstitution {
-            register(substitutes)
+            substitute(module("com.github.1fexd.super:platform")).using(project(":"))
         }
     }
+
+    for ((dir, substitutes) in includes) {
+        includeBuild(dir) {
+            dependencySubstitution {
+                register(substitutes)
+            }
+        }
+    }
+
+    rootProject.projectDir.listFiles()
+        ?.filter { it.name !in includes }
+        ?.filter { it.name !in excludes }
+        ?.filter { it.isDirectory }
+        ?.filter { !it.name.startsWith(".") }
+        ?.forEach { includeBuild(it) }
 }
-
-rootProject.projectDir.listFiles()
-    ?.filter { it.name !in includes }
-    ?.filter { it.name !in excludes }
-    ?.filter { it.isDirectory }
-    ?.filter { !it.name.startsWith(".") }
-    ?.forEach { includeBuild(it) }
-
-

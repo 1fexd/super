@@ -25,15 +25,7 @@ dependencies {
     }
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = project.group.toString()
-            artifactId = "platform"
-            version = project.version.toString()
-
-            from(components["javaPlatform"])
-        }
-    }
+publishing.publications.create<MavenPublication>("maven") {
+    artifactId = "platform"
+    from(components["javaPlatform"])
 }
-
