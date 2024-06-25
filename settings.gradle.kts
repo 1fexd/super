@@ -31,6 +31,7 @@ rootProject.name = "super"
 
 val excludes = setOf(
     "gradle", "buildSrc",
+    "platform"
 //    "bom"
 //    "clearurl",
 //    "gson-ext",
@@ -88,7 +89,14 @@ val includes = mapOf(
 
 fun DependencySubstitutions.register(substitutes: List<Substitute>) {
     for ((module, target) in substitutes) {
+        println("$module for $target")
         substitute(module(module)).using(project(target))
+    }
+}
+
+includeBuild("platform") {
+    dependencySubstitution {
+        substitute(module("com.github.1fexd.super:platform")).using(project(":"))
     }
 }
 
@@ -106,3 +114,5 @@ rootProject.projectDir.listFiles()
     ?.filter { it.isDirectory }
     ?.filter { !it.name.startsWith(".") }
     ?.forEach { includeBuild(it) }
+
+
