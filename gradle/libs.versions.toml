@@ -6,6 +6,7 @@ signify = "0.0.5"
 kotlin-ext = "0.0.59"
 kotlin-reflect-helper = "0.0.1"
 koin-helper = "6.0.0"
+koin = "3.5.6"
 
 [libraries]
 gsonExtCore = { module = "com.gitlab.grrfe.gson-ext:core", version.ref = "gson-ext" }
@@ -16,3 +17,8 @@ signify = { module = "com.github.1fexd.signifykt:lib", version.ref = "signify" }
 kotlinExt = { module = "com.gitlab.grrfe.kotlin-ext:lib", version.ref = "kotlin-ext" }
 kotlinReflectHelper = { module = "com.gitlab.grrfe:kotlin-reflect-helper", version.ref = "kotlin-reflect-helper" }
 koinHelper = { module = "com.gitlab.grrfe:koin-helper", version.ref = "koin-helper" }
+gson = { module = "com.google.code.gson:gson", version = "2.11.0" }
+jsoup = {module = "org.jsoup:jsoup", version = "1.17.2" }
+koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+kotlinxCliJvm = { module = "org.jetbrains.kotlinx:kotlinx-cli-jvm", version = "0.3.6" }
+apacheHttpComponentsCore = { module = "org.apache.httpcomponents.core5:httpcore5", version = "5.3-alpha1" }

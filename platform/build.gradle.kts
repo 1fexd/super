@@ -9,11 +9,11 @@ version = versioning.info.tag ?: versioning.info.full
 
 dependencies {
     constraints {
-        api(externalLibs.gson)
-        api(externalLibs.jsoup)
-        api(externalLibs.koinCore)
-        api(externalLibs.kotlinxCliJvm)
-        api(externalLibs.apacheHttpComponentsCore)
+        api(libs.gson)
+        api(libs.jsoup)
+        api(libs.koinCore)
+        api(libs.kotlinxCliJvm)
+        api(libs.apacheHttpComponentsCore)
 
         api(libs.gsonExtCore)
         api(libs.gsonExtKoin)
