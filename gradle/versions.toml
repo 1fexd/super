@@ -1,0 +1,18 @@
+[versions]
+gson-ext = "16.0.0-gson2-koin3"
+uriparser = "0.0.11"
+tld-lib = "2.1.0"
+signify = "0.0.5"
+kotlin-ext = "0.0.59"
+kotlin-reflect-helper = "0.0.1"
+koin-helper = "6.0.0"
+
+[libraries]
+gsonExtCore = { module = "com.gitlab.grrfe.gson-ext:core", version.ref = "gson-ext" }
+gsonExtKoin = { module = "com.gitlab.grrfe.gson-ext:koin", version.ref = "gson-ext" }
+uriparser = { module = "com.github.1fexd:uriparser", version.ref = "uriparser" }
+tldLib = { module = "com.github.1fexd.tld-lib:lib", version.ref = "tld-lib" }
+signify = { module = "com.github.1fexd.signifykt:lib", version.ref = "signify" }
+kotlinExt = { module = "com.gitlab.grrfe.kotlin-ext:lib", version.ref = "kotlin-ext" }
+kotlinReflectHelper = { module = "com.gitlab.grrfe:kotlin-reflect-helper", version.ref = "kotlin-reflect-helper" }
+koinHelper = { module = "com.gitlab.grrfe:koin-helper", version.ref = "koin-helper" }
